@@ -1,1 +1,0 @@
-import { useIntersectionObserver } from "./useIntersectionObserver";
