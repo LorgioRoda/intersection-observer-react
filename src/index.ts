@@ -1,1 +1,1 @@
-export * from './hooks/index.ts';
+export * from './components/index';
