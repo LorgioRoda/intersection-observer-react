@@ -10,7 +10,13 @@ interface IntersectionOptions {
   rootMargin?: string;
 }
 
-export const LazyComponent: React.FC<LazySectionProps> = ({ children, options }) => {
+interface LazyComponentProps {
+  options: IntersectionOptions,
+  children: React.Element | React.Element[],
+  Loading?: React.Element | string
+}
+
+export const LazyComponent: React.FC<LazySectionProps> = ({ children, options, Loading = 'Loading...' }: LazyComponentProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const targetRef = useRef<HTMLDivElement>(null);
 
@@ -45,5 +51,5 @@ export const LazyComponent: React.FC<LazySectionProps> = ({ children, options })
     };
   }, [options]);
 
-  return <div ref={targetRef}>{isVisible ? children : <div>Loading...</div>}</div>;
+  return <div ref={targetRef}>{isVisible ? children : <><Loading/></>}</div>;
 };
